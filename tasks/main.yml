@@ -16,6 +16,9 @@
 - name: Ensure handlers are notified now to avoid firewall conflicts.
   meta: flush_handlers
 
+- include_tasks: docker-nft.yml
+  when: docker_use_nft | bool
+
 - include_tasks: docker-compose.yml
   when: docker_install_compose | bool
 

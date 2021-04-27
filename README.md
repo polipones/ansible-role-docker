@@ -1,6 +1,8 @@
 # Ansible Role: Docker
 
-An Ansible Role that installs [Docker](https://www.docker.com) on Linux. For Ubuntu/Debian only.
+An Ansible Role that installs [Docker](https://www.docker.com) on Linux. For Ubuntu/Debian only. Docker with Nftables.
+
+Source: https://gist.github.com/goll/bdd6b43c2023f82d15729e9b0067de60.
 
 ## Requirements
 

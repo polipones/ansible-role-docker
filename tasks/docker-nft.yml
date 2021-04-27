@@ -1,0 +1,28 @@
+- name: Stop docker and containerd
+  service:
+    name: "{{ item }}"
+    state: stopped
+  loop:
+    - "docker"
+    - "containerd"
+
+- name: Modify daemon.json
+  lineinfile:
+    path: /etc/docker/daemon.json
+    line: '{"iptables": false}'
+    create: yes
+
+- name: Append docker nftables configuration to /etc/nftables.conf
+  lineinfile:
+    path: /etc/nftables.conf
+    line: "{{ lookup('file', 'files/nftables-docker.conf') }}"
+
+- name: Restart nftables service
+  service:
+    name: nftables
+    state: restarted
+
+- name: Start docker
+  service:
+    name: docker
+    state: started

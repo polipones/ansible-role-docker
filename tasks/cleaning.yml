@@ -1,0 +1,11 @@
+- name: Install chronic
+  apt:
+    name: moreutils
+    update_cache: yes
+
+- name: Setup cron job to clean docker stuff every day
+  cron:
+    hour: 0
+    minute: 0
+    name: "Clean docker stuff"
+    job: 'chronic docker system prune -a --force --filter "until=48h"'

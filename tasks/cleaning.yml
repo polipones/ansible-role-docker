@@ -1,6 +1,8 @@
 - name: Install chronic
   apt:
-    name: moreutils
+    name:
+    - moreutils
+    - cron
     update_cache: yes
 
 - name: Setup cron job to clean docker stuff every day

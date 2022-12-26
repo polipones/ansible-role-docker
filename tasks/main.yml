@@ -7,9 +7,9 @@
     state: "{{ docker_package_state }}"
   notify: restart docker
 
-- name: Template daemon.json
-  template:
-    src: "etc/docker/daemon.json.j2"
+- name: Copy daemon.json
+  copy:
+    src: "etc/docker/daemon.json"
     dest: "/etc/docker/daemon.json"
     owner: root
     group: root

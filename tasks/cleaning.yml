@@ -11,3 +11,4 @@
     minute: 0
     name: "Clean docker stuff"
     job: 'chronic docker system prune -a --force --filter "until=48h"'
+  ignore_errors: "{{ ansible_check_mode }}"

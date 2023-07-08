@@ -6,6 +6,7 @@
     name: "{{ docker_package }}"
     state: "{{ docker_package_state }}"
   notify: restart docker
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Copy daemon.json
   copy:
@@ -22,6 +23,7 @@
     name: docker
     state: "{{ docker_service_state }}"
     enabled: "{{ docker_service_enabled }}"
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Ensure handlers are notified now to avoid firewall conflicts.
   meta: flush_handlers
